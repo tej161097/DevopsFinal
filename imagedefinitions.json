@@ -1,0 +1,14 @@
+[
+  {
+    "name": "users",
+    "imageUri": "668064981707.dkr.ecr.us-east-1.amazonaws.com/final:users"
+  },
+  {
+    "name": "posts",
+    "imageUri": "668064981707.dkr.ecr.us-east-1.amazonaws.com/final:posts"
+  },
+  {
+    "name": "threads",
+    "imageUri": "668064981707.dkr.ecr.us-east-1.amazonaws.com/final:threads"
+  }
+]
