@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email) # Login to Amazon ECR
+      - REPOSITORY_URI=668064981707.dkr.ecr.us-east-1.amazonaws.com/final # ECR repository URI
+  build:
+    commands:
+      - echo Building and pushing Docker images...
+      - docker build -t $REPOSITORY_URI:users ./users # Build 'users' Docker image from 'users' directory
+      - docker build -t $REPOSITORY_URI:posts ./posts # Build 'posts' Docker image from 'posts' directory
+      - docker build -t $REPOSITORY_URI:threads ./threads # Build 'threads' Docker image from 'threads' directory
+      - docker push $REPOSITORY_URI:users # Push 'users' Docker image to ECR
+      - docker push $REPOSITORY_URI:posts # Push 'posts' Docker image to ECR
+      - docker push $REPOSITORY_URI:threads # Push 'threads' Docker image to ECR
+artifacts:
+  files: []
